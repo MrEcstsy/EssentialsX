@@ -1,0 +1,45 @@
+# (!) DO NOT CHANGE (!)
+version: 1.0.0
+
+# Kits Configuration
+kits:
+  tools:
+    cooldown: 10
+    items:
+      - item: "stone_sword"
+      - item: "stone_shovel"
+      - item: "stone_pickaxe"
+      - item: "stone_axe"
+  dtools:
+    cooldown: 600
+    items:
+      - item: "diamond_pickaxe"
+        name: "&r&4Gigadrill"
+        lore:
+          - "&r&7The drill that"
+          - "&r&7pierces | the heavens"
+        enchantments:
+          - enchantment: "efficiency"
+            level: 1
+          - enchantment: "unbreaking"
+            level: 1
+          - enchantment: "fortune"
+            level: 1
+      - item: "diamond_shovel"
+        name: "&rDwarf"
+        lore:
+          - "&r&7dwarf"
+          - "&r&7diggy"
+          - "&r&7hole"
+        enchantments:
+          - enchantment: "efficiency"
+            level: 3
+      - item: "leather_helmet"
+        name: "&rTop hat"
+        lore:
+          - "&r&7Good day, Good day"
+        color: "255,255,255" # RGB
+        enchantments:
+          - enchantment: "unbreaking"
+            level: 3
+      - item: "diamond_axe"

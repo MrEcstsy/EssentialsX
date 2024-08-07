@@ -1,0 +1,108 @@
+name: EssentialsX
+main: ecstsy\essentialsx\Loader
+api: 5.0.0
+version: 1.0.3
+author: ecstsy
+soft-depend:
+  - RankSystem
+
+permissions:
+  essentialsx.default:
+    default: true
+    description: "Default permission for EssentialsX"
+  essentialsx.ban:
+    default: op
+    description: "Gives access to /ban command."
+  essentialsx.ip-ban:
+    default: op
+    description: "Gives access to /ipban command." 
+  essentialsx.ban.exempt:
+    default: op
+    description: "Exempt from ban command."
+  essentialsx.ban-lookup:
+    default: op
+    description: "Gives access to /ban-lookup command."   
+  essentialsx.add-xp:
+    default: op
+    description: "Gives access to /add-xp command."
+  essentialsx.remove-xp:
+    default: op
+    description: "Gives access to /remove-xp command."
+  essentialsx.set-xp:
+    default: op
+    description: "Gives access to /set-xp command." 
+  essentialsx.show-xp:
+    default: true
+    description: "Gives access to /show-xp command."
+  essentialsx.xp.see:
+    default: true
+    description: "Gives access to /xp command."   
+  essentialsx.commandcooldowns.bypass:
+    default: op
+    description: "Gives access to bypass command cooldowns."  
+  essentialsx.nick:
+    default: op
+    description: "Gives access to /nick command."
+  essentialsx.nick.hideprefix:
+    default: op
+    description: "Hides nick prefix."
+  essentialsx.nick.blacklist:
+    default: op
+    description: "Gives access to /nick blacklist names."
+  essentialsx.feed:
+    default: op
+    description: "Gives access to /feed command."  
+  essentialsx.heal:
+    default: op
+    description: "Gives access to /heal command."  
+  essentialsx.show-xp:
+    default: true
+    description: "Gives access to /show-xp command." 
+  essentialsx.give-kit:
+    default: op
+    description: "Gives access to /give-kit command."   
+  essentialsx.near:
+    default: op
+    description: "Gives access to /near command."
+  essentialsx.spawn-set:
+    default: op
+    description: "Gives access to /spawn-set command."    
+  essentialsx.itemdb:
+    default: op
+    description: "Gives access to /itemdb command."  
+  essentialsx.gamemode:
+    default: op
+    description: "Gives access to /gamemode command."  
+  essentialasx.fly:
+    default: op
+    description: "Gives access to /fly command."  
+  essentialsx.give:
+    default: op
+    description: "Gives access to /give command."  
+  essentialsx.remove-warp:
+    default: op
+    description: "Gives access to /delwarp command."  
+  essentialsx.create-warp:
+    default: op
+    description: "Gives access to /setwarp command."
+  essentialsx.fly:
+    default: op
+    description: "Gives access to /fly command."
+  essentialsx.warp.others:
+    default: op
+    description: "Gives access to /warp others command."   
+  essentialsx.nick:
+    default: op
+    description: "Gives access to /nick command."  
+  essentialsx.workbench:
+    default: op
+    description: "Gives access to /workbench command."
+  essentialsx.anvil:
+    default: op
+    description: "Gives access to /anvil command."  
+  essentialsx.eco:
+    default: op
+    description: "Gives access to /eco command."      
+  essentialsx.eco-give:
+    default: op
+    description: "Gives access to /eco give command."  
