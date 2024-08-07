@@ -1,0 +1,122 @@
+# EssentialsX Pocketmine-MP port configuration!
+# Made by Wockgod
+# Discord: `wockkinmycup`
+# (!) DO NOT CHANGE (!)
+version: 1.0.2
+language: messages-eng
+
+# (!) NOTICE (!)
+# Some of these features require their own tags for plugins
+# that use these, such as RankSystem, in order for nicknames 
+# to properly appear i have created a tag that serves this purpose.
+# Below is a list of tags and what they do:
+#
+# Tags:
+# RankSystem:
+#  "{display_name}" - The display name of the player
+
+# The character(s) to prefix all nicknames, so that you know they are not true usernames.
+# Users with essentialsx.nick.hideprefix will not be prefixed with the character(s)
+nickname-prefix: '~'
+
+# The maximum length allowed in nicknames. The nickname prefix is not included in this.
+max-nick-length: 15
+
+# A list of phrases that cannot be used in nicknames. You can include regular expressions here.
+# Users with essentialsx.nick.blacklist.bypass will be able to bypass this filter.
+nick-blacklist:
+ # Notch
+#- '^Dinnerbone'
+
+# When this option is enabled, nickname length checking will exclude color codes in player names.
+# ie: "&6Notch" has 7 characters (2 are part of a color code), a length of 5 is used when this option is set to true
+ignore-colors-in-max-nick-length: false
+
+# Set the default max amount of homes 
+max-homes: 3
+
+# Adding commands here will disable them 
+# This should prevent command conflicts
+disabled-commands:
+#  - nick
+#  - clear
+
+# Cooldowns for commands in seconds
+command-cooldowns:
+  feed: 10 # 10 Seconds
+  home: 70 # 1 minute 10 seconds
+  heal: 60 # 1 minute
+
+# Vanilla Enchantments
+# Ores that fortune activates on
+fortune.blocks:
+  - coal_ore
+  - iron_ore
+  - gold_ore
+  - diamond_ore
+  - leaves
+  - nether_quartz_ore
+  - glowstone
+  - redstone_ore
+  - emerald_ore
+  - glowing_redstone_ore
+
+# Entities that looting will work on.
+looting.entities:
+  drop_multiplier: 2
+  zombie:
+    - "rotten_flesh" # Rotten Flesh drop
+  skeleton:
+    - "bone" # Bone drop
+    - "arrow" # Arrow drop
+  creeper:
+    - "gunpowder" # Gunpowder drop
+  spider:
+    - "string" # String drop
+    - "spider_eye" # Spider Eye drop
+  enderman:
+    - "ender_pearl" # Ender Pearl drop
+  chicken:
+    - "feather" # Feather drop
+    - "raw_chicken" # Raw Chicken drop
+  cow:
+    - "leather" # Leather drop
+    - "beef" # Beef drop
+  pig:
+    - "porkchop" # Porkchop drop
+  sheep:
+    - "wool" # Wool dro
+  blaze:
+    - "blaze_rod" # Blaze Rod drop
+
+# Near Radius
+# The default radius with /near
+near-radius: 200
+
+############################################################
+# +------------------------------------------------------+ #
+# |                       Economy                        | #
+# +------------------------------------------------------+ #
+############################################################
+
+# For more information, visit http://wiki.ess3.net/wiki/Essentials_Economy
+
+# You can control the values of items that are sold to the server by using the /setworth command.
+
+# Defines the balance with which new players begin. Defaults to 0.
+starting-balance: 0
+
+# Set this to a currency symbol you want to use.
+currency-symbol: '$'
+
+# Set the maximum amount of money a player can have.
+# The amount is always limited to 10 trillion because of the limitations of a java double.
+max-money: 10000000000000
+
+# Minimum acceptable amount to be used in /pay.
+minimum-pay-amount: 1
+
+# Whether or not users with a balance less than or equal to $0 should be shown in balance-top.
+# Setting to false will not show people with balances <= 0 in balance-top.
+# NOTE: After reloading the config, you must also restart for it to appear
+show-zero-baltop: true
