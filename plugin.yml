@@ -106,3 +106,12 @@ permissions:
   essentialsx.eco-give:
     default: op
     description: "Gives access to /eco give command."  
+  essentialsx.repairall:
+    default: op
+    description: "Gives access to /repair all command."
+  essentialsx.repair:
+    default: op
+    description: "Gives access to /repair command."
+  essentialsx.top:
+    default: op
+    description: "Gives access to /top command."
