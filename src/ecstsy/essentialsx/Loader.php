@@ -14,6 +14,10 @@ use ecstsy\essentialsx\Commands\FeedCommand;
 use ecstsy\essentialsx\Commands\FlyCommand;
 use ecstsy\essentialsx\Commands\GamemodeCommand;
 use ecstsy\essentialsx\Commands\GiveCommand;
+use ecstsy\essentialsx\Commands\GMACommand;
+use ecstsy\essentialsx\Commands\GMCCommand;
+use ecstsy\essentialsx\Commands\GMSCommand;
+use ecstsy\essentialsx\Commands\GMSPCommand;
 use ecstsy\essentialsx\Commands\HealCommand;
 use ecstsy\essentialsx\Commands\HomeCommand;
 use ecstsy\essentialsx\Commands\HomesCommand;
@@ -23,9 +27,17 @@ use ecstsy\essentialsx\Commands\KitCommand;
 use ecstsy\essentialsx\Commands\ListWarpsCommand;
 use ecstsy\essentialsx\Commands\NearCommand;
 use ecstsy\essentialsx\Commands\NickCommand;
+use ecstsy\essentialsx\Commands\PayCommand;
 use ecstsy\essentialsx\Commands\RemoveHomeCommand;
 use ecstsy\essentialsx\Commands\RemoveWarpCommand;
+use ecstsy\essentialsx\Commands\RepairCommand;
+use ecstsy\EssentialsX\Commands\RulesCommand;
 use ecstsy\essentialsx\Commands\SpawnCommand;
+use ecstsy\EssentialsX\Commands\TopCommand;
+use ecstsy\essentialsx\Commands\TopMoneyCommand;
+use ecstsy\essentialsx\Commands\TpAcceptCommand;
+use ecstsy\essentialsx\Commands\TpaCommand;
+use ecstsy\essentialsx\Commands\TpaHereCommand;
 use ecstsy\essentialsx\Commands\WarpCommand;
 use ecstsy\essentialsx\Commands\WorkbenchCommand;
 use ecstsy\essentialsx\Listeners\EventListener;
@@ -65,9 +77,7 @@ class Loader extends PluginBase {
     }
 
     public function onEnable(): void {
-        $language = $this->getConfig()->get("language", "messages-eng");
-        $this->languageManager = new LanguageManager($this, $language);
-        
+
         $files = ["config.yml", "kits.yml"];
 
         foreach ($files as $file) {
@@ -80,11 +90,14 @@ class Loader extends PluginBase {
             $this->saveAllFilesInDirectory($directory);
         }
 
+        $language = $this->getConfig()->get("language", "messages-eng");
+        $this->languageManager = new LanguageManager($this, $language);
+
         foreach ($this->getResources() as $resource) {
             Utils::checkConfigVersion($resource);
         }
 
-        $unregisteredCommands = ["ban", "ban-ip", "gamemode", "give"];
+        $unregisteredCommands = ["ban", "ban-ip", "gamemode"];
 
         foreach ($unregisteredCommands as $command) {
             $this->getServer()->getCommandMap()->unregister(Server::getInstance()->getCommandMap()->getCommand($command));
@@ -115,8 +128,20 @@ class Loader extends PluginBase {
             new GiveCommand($this, "give", "Give an item to a player", ["i", "item"]),
             new WorkbenchCommand($this, "workbench", "Open your workbench", ["craft"]),
             new AnvilCommand($this, "anvil", "Open your anvil", ["anvil"]),
-            new BalanceCommand($this, "balance", "View your balance", ["bal"]),
+            new BalanceCommand($this, "balance", "States the current balance of a player", ["bal"]),
             new EcoCommand($this, "eco", "Manages the server economoy", ["eco"]),
+            new GMCCommand($this, "gmc", "Change your gamemode to creative"),
+            new GMSCommand($this, "gms", "Change your gamemode to survival"),
+            new GMACommand($this, "gma", "Change your gamemode to adventure", ["gmt"]),
+            new GMSPCommand($this, "gmsp", "Change your gamemode to spectator"),
+            new TopMoneyCommand($this, "balancetop", "Gets the top balance values", ["baltop"]),
+            new TpaCommand($this, "tpa", "Request to teleport to the specified player"),
+            new TpaHereCommand($this, "tpahere", "Requests for the specified player teleport to you"),
+            new TpAcceptCommand($this, "tpaccept", "Accepts a teleport request"),
+            new PayCommand($this, "pay", "Pay another player"),
+            new RepairCommand($this, "repair", "Repairs the durability of one or all items.", ["fix", "efix", "erepair"]),
+            new TopCommand($this, "top", "Teleport to the highest block at your current position."),
+            new RulesCommand($this, "rules", "View the rules of the server"),
         ];
 
         foreach ($commands as $command) {

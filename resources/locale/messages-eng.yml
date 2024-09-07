@@ -1,5 +1,5 @@
 # (!) DO NOT TOUCH (!)
-version: 1.0.1
+version: 1.0.5
 
 # You can use the `&` symbol throughout this config for color codes.
 # Ban Information
@@ -18,7 +18,7 @@ gamemode:
   invalid_gamemode: "&cInvalid gamemode"
   player_not_found: "&cPlayer '{player}' does not exist or is offline."
   no_permission: "&cYou don't have permission to change to that game mode."
-  set_gamemode: "&aSet {player}'s game mode to {gamemode}."
+  set_gamemode: "&r&6Set game mode &c{gamemode} &6for &c{player}&6."
 
 # Exp Messages
 # Tags: {player} {exp} {level} {levelup} {amount} {new_xp}
@@ -59,3 +59,63 @@ quit:
 balance:
   display: "&r&aBalance: &c${balance}"
   display-other: "&r&aBalance of {player}: &c${balance}"
+  # Tags: {date} - Shows current time the command was executed
+  # {page} - Shows the current page
+  # {max_page} - Shows the total amount of pages
+  # {total} - Shows the total amount of money on the server
+  # {balance} - Shows the balance of the player
+  # {player} - Shows the name of the player
+  # {place} - Shows the place of the player
+
+  balance-top: "&r&6Top Balances ({date})"
+  balance-top-header: "&r&e ---- &6Balancetop &e-- &6Page &c{page}&6/&c{max_page} &e----"
+  balance-top-total: "&r&6Server Total: &c${total}"
+  balance-top-body: "&r&f{place}. {player}, ${balance}"
+  balance-top-limit: 10 # The amount of players shown per page
+
+# TPA Messages
+# Tags: 
+# {player} - Shows the name of the player
+# {player_name} - Shows the name tag of the player
+# {target} - Shows the name of the target
+# {target_name} - Shows the name tag of the target
+tpa:
+  expire-time: 120 # The amount of time in seconds before the TPA request times out
+  sent: 
+    - "&r&6Request sent to &c{target_name}&6."
+    - "&r&6To cancel this request, type &c/tpacancel&6."
+  received: 
+    - "&r&c{player_name} &6has requested to teleport to you."
+    - "&r&6To teleport, type &c/tpaccept&6."
+    - "&r&6To deny this request, type &c/tpdeny&6."
+    - "&r&6This request will timeout after &c{time} seconds&6."
+  received-here:
+    - "&r&c{player_name} &6has requested that you teleport to them."
+    - "&r&6To teleport, type &c/tpaccept&6."
+    - "&r&6To deny this request, type &c/tpdeny&6."
+    - "&r&6This request will timeout after &c{time} seconds&6."
+  timed-out:
+    - "&r&cTeleport request from {player} has timed out."
+  pending:
+    none: "&r&cError: &4You do not have a pending request."
+  accepted: 
+    accepter:
+      - "&r&6Teleport request accepted."
+    requester:
+      - "&r&c{player} &6has accepted your teleport request."
+      - "&r&6Teleporting to &c{player}&6." 
+
+# Repair Messages
+repair:
+  invalid: "&r&cError: &4This item cannot be repaired."
+  success: "&r&6You have successfully repaired your: &c{item}&6."
+  all-none: "&r&cError: &4There were no items that needed repairing."
+
+# Top Messages
+top:
+  success: "&r&6Teleporting to top."
+
+# Rule Messages
+rules:
+  header: "&r&e ---- &6Rules &e-- &6Page &c{page}&6/&c{max_page} &e----"
+  footer: "&r&6Type &c/rules {next_page} &6to view the next page."

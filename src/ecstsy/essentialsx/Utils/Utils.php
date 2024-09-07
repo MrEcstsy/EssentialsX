@@ -24,6 +24,14 @@ class Utils {
     
     private static array $configCache = [];
 
+    public static array $tpaRequests = [];
+    
+    public static array $tpahereRequests = [];
+
+    public static array $lastTpaRequester = [];
+
+    public static string $notEnoughMoney = "&r&4Error: &cYou don't have enough money!";
+
     public static function workBench(): InvMenu {
         return InvMenu::create(self::MENU_TYPE_WORKBENCH);
     }
@@ -66,6 +74,7 @@ class Utils {
         return $config;
     }
 
+    // TODO switch to ConfigUpdater
     public static function checkConfigVersion(string $fileName): void {
         $configVersion = Loader::getInstance()->getConfig()->get("version");
         $messageVersion = Loader::getInstance()->getLang()->get("version");
@@ -75,7 +84,7 @@ class Utils {
             Loader::getInstance()->getLogger()->info("Updating version of $fileName");
             self::saveOldConfig("config.yml");
             Loader::getInstance()->saveDefaultConfig();
-        } elseif ($messageVersion === null || $messageVersion !== "1.0.1") {
+        } elseif ($messageVersion === null || $messageVersion !== "1.0.5") {
             Loader::getInstance()->getLogger()->info("Updating version of $fileName");
             self::saveOldConfig("locale/messages-eng.yml");
             Loader::getInstance()->saveResource($fileName);
@@ -87,10 +96,19 @@ class Utils {
     }
 
     public static function saveOldConfig(string $fileName): void {
-        $oldConfigPath = Loader::getInstance()->getDataFolder() . "old_$fileName";
+        $dataFolder = Loader::getInstance()->getDataFolder();
+        $oldConfigPath = $dataFolder . "old_" . dirname($fileName) . DIRECTORY_SEPARATOR;
+        $fullOldConfigPath = $oldConfigPath . basename($fileName);
+    
+        if (!is_dir($oldConfigPath)) {
+            mkdir($oldConfigPath, 0755, true);
+        }
+    
         Loader::getInstance()->saveResource($fileName, false);
-        rename(Loader::getInstance()->getDataFolder() . $fileName, $oldConfigPath);
+    
+        rename($dataFolder . $fileName, $fullOldConfigPath);
     }
+    
 
     public static function getPermissionLockedStatus(Player $player, string $permission) : string {
         if ($player->hasPermission($permission)) {
@@ -353,4 +371,47 @@ class Utils {
         return $seconds * 20;
     }
 
+    public static function checkRequestTimeout(string $targetName, string $type): void {
+        if (isset(self::${$type}[$targetName])) {
+            $request = self::${$type}[$targetName];
+            if ((time() - $request['time']) >= 60) { // 60 seconds
+                $requesterName = $request['requester'];
+                $requester = self::getPlayerByPrefix($requesterName);
+                $target = self::getPlayerByPrefix($targetName);
+    
+                if ($requester !== null && $requester->isOnline()) {
+                    $requester->sendMessage(C::colorize("&r&l&c(!) &r&cYour teleport request to " . $targetName . " has expired."));
+                }
+    
+                if ($target !== null && $target->isOnline()) {
+                    foreach (Loader::getInstance()->getLang()->getAll()['tpa']['timed-out'] as $line) {
+                        $target->sendMessage(C::colorize(str_replace(["{player_name}", "{time}", "{player}"], [$requesterName, "60", $requesterName], $line)));
+                    }
+                }
+    
+                self::$lastTpaRequester[$targetName] = $requesterName;
+                unset(self::${$type}[$targetName]);
+            }
+        }
+    }
+    
+    public static function handleExpiredTpaRequests(Player $player): void {
+        if (isset(self::$lastTpaRequester[$player->getName()])) {
+            $lastRequesterName = self::$lastTpaRequester[$player->getName()];
+    
+            $player->sendMessage(C::colorize("&cYou have no pending teleport requests."));
+            unset(self::$lastTpaRequester[$player->getName()]);
+        }
+    }
+
+    public static function createDefaultRulesFile(string $filePath): void
+    {
+        $defaultRules = [
+            "[1] Be respectful",
+            "[2] Be ethical",
+            "[3] Use common sense",
+        ];
+
+        file_put_contents($filePath, implode(PHP_EOL, $defaultRules));
+    }
 }

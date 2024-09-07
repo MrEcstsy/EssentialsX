@@ -20,7 +20,7 @@ class LanguageManager {
             throw new \RuntimeException("Language file not found for language key '$languageKey' at: " . $this->filePath);
         }
         
-        $this->config = Utils::getConfiguration($plugin, "/locale/" . $languageKey . ".yml");
+        $this->config = Utils::getConfiguration($plugin, "locale/" . $languageKey . ".yml");
     }
 
     public function get(string $key): string {
