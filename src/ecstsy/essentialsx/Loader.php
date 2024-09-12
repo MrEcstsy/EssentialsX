@@ -48,7 +48,7 @@ use ecstsy\essentialsx\Utils\AnvilInvMenuType;
 use ecstsy\essentialsx\Utils\Queries;
 use ecstsy\essentialsx\Utils\Utils;
 use ecstsy\essentialsx\Utils\CraftingTableInvMenuType;
-use ecstsy\EssentialsX\Utils\LanguageManager;
+use ecstsy\essentialsx\Utils\LanguageManager;
 use IvanCraft623\RankSystem\RankSystem;
 use IvanCraft623\RankSystem\session\Session;
 use IvanCraft623\RankSystem\tag\Tag;
