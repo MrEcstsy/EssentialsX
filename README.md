@@ -1,2 +1,2 @@
 # EssentialsX
-for pocketmine..
+for pocketmine.. like the java version..
