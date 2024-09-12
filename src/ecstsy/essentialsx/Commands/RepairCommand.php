@@ -3,7 +3,7 @@
 namespace ecstsy\essentialsx\Commands;
 
 use CortexPE\Commando\BaseCommand;
-use ecstsy\EssentialsX\Commands\SubCommands\Repair\RepairAllSubCommand;
+use ecstsy\essentialsx\Commands\SubCommands\Repair\RepairAllSubCommand;
 use ecstsy\essentialsx\Loader;
 use pocketmine\command\CommandSender;
 use pocketmine\item\Durable;
