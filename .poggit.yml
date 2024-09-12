@@ -1,0 +1,20 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/MrEcstsy/EssentialsX
+build-by-default: true
+branches:
+- main
+projects:
+  EssentialsX:
+    path: ""
+    libs:
+      - src: "Paroxity/Commando/Commando"
+        version: "^3.2.0"
+      - src: "muqsit/simplepackethandler/SimplePacketHandler"
+        branch: pm5
+        version: "^0.1.4"
+      - src: Vecnavium/FormsUI/FormsUI
+        version: ^1.1.3
+      - src: ifera-mc/ConfigUpdater/ConfigUpdater
+        version: ^2.1.0
+      - src: poggit/libasynql/libasynql
+        version: ^4.1.6
+...
