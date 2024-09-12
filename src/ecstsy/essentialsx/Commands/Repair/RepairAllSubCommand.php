@@ -1,6 +1,6 @@
 <?php
 
-namespace ecstsy\EssentialsX\Commands\SubCommands\Repair;
+namespace ecstsy\essentialsx\Commands\SubCommands\Repair;
 
 use CortexPE\Commando\BaseSubCommand;
 use ecstsy\essentialsx\Loader;
