@@ -1,6 +1,6 @@
 name: EssentialsX
 main: ecstsy\essentialsx\Loader
-api: 5.0.0
+api: 5.3.0
 version: 1.0.3
 author: ecstsy
 soft-depend:
