@@ -1,9 +1,9 @@
 <?php
 
-namespace ecstsy\EssentialsX\Commands\SubCommands\Repair;
+namespace ecstsy\essentialsx\Commands\SubCommands\Repair;
 
 use CortexPE\Commando\BaseSubCommand;
-use ecstsy\EssentialsX\Loader;
+use ecstsy\essentialsx\Loader;
 use pocketmine\command\CommandSender;
 use pocketmine\item\Durable;
 use pocketmine\player\Player;
