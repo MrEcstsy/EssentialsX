@@ -50,7 +50,7 @@ class RulesCommand extends BaseCommand {
         $header = str_replace(
             ["{page}", "{max_page}"],
             [$page, $totalPages],
-            C::colorize($config->getNested("rules.header", "&aRules:"))
+            C::colorize($config->getNested("rules.header"))
         );
         $sender->sendMessage($header);
 
@@ -64,7 +64,7 @@ class RulesCommand extends BaseCommand {
             $footer = str_replace(
                 ["{page}", "{next_page}"],
                 [$page, $nextPage],
-                C::colorize($config->getNested("rules.footer", "&ePage {page}/{totalPages}"))
+                C::colorize($config->getNested("rules.footer"))
             );
             $sender->sendMessage($footer);
         }
