@@ -1,6 +1,6 @@
 <?php
 
-namespace ecstsy\EssentialsX\Utils;
+namespace ecstsy\essentialsx\Utils;
 
 use ecstsy\essentialsx\Utils\Utils;
 use pocketmine\plugin\PluginBase;
